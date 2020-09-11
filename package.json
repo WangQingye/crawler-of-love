@@ -1,0 +1,26 @@
+{
+  "name": "crawler-of-love",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WangQingye/crawler-of-love.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WangQingye/crawler-of-love/issues"
+  },
+  "homepage": "https://github.com/WangQingye/crawler-of-love#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "emailjs": "^3.3.0",
+    "moment": "^2.27.0",
+    "nodemailer": "^6.4.11",
+    "nodemailer-smtp-transport": "^2.7.4"
+  }
+}
