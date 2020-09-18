@@ -6,12 +6,13 @@ const config = {
   constellation: '处女座'
 }
 async function getWeather() {
-  const res = await axios.get(`https://api.asilu.com/weather`, {
+  const res = await axios.get(`http://apis.juhe.cn/simpleWeather/query`, {
     params: {
-      city: config.city
+      city: config.city,
+      key: '6a7a12d94f31d96c5617a1426616ba76'
     }
   })
-  const weather = res.data.weather[0]
+  const weather = res.data.result.future[0]
   // {
   //   "date": "周四 09月10日",
   //   "icon1": "day/yin",
@@ -82,17 +83,29 @@ async function getLoveTalk() {
   const res = await axios.get(`https://v1.alapi.cn/api/qinghua`)
   return res.data.data.content
 }
-
+function getDays(sDate1) {    //sDate1和sDate2是2006-12-18格式
+  var dateSpan,
+      tempDate,
+      iDays;
+  sDate1 = Date.parse(sDate1);
+  sDate2 = Date.parse(new Date());
+  dateSpan = sDate2 - sDate1;
+  dateSpan = Math.abs(dateSpan);
+  iDays = Math.floor(dateSpan / (24 * 3600 * 1000));
+  return iDays
+};
 async function getInfo() {
   const weather = await getWeather()
   const constellation = await getConstellation()
   const joke = await getJoke()
   const loveTalk = await getLoveTalk()
+  const days = getDays('2020-08-20')
   return {
     weather,
     constellation,
     joke,
-    loveTalk
+    loveTalk,
+    days
   }
 }
 module.exports = getInfo

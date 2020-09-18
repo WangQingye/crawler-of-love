@@ -16,8 +16,7 @@ const email = {
 }
 const smtpTransporter = nodemailer.createTransport({
     host: "smtp.sina.com", // qq邮箱主机
-    secure: true,
-    port: 465, // SMTP 端口
+    port: 25, // SMTP 端口
     auth: {
         user: email.user,
         pass: email.pass
@@ -36,22 +35,22 @@ smtpTransporter.verify(function(error, success) {
 //  * @param {String} subject 发送的主题
 //  * @param {String} html 发送的html内容
 //  */
-// var sendMail = function (recipient, subject, html) {
+var sendMail = function (recipient, subject, html) {
 
-//   smtpTransporter.sendMail({
+  smtpTransporter.sendMail({
 
-//         from: email.user,
-//         to: recipient,
-//         subject: subject,
-//         html: html
+        from: email.user,
+        to: recipient,
+        subject: subject,
+        html: html
 
-//     }, function (error, response) {
-//         if (error) {
-//             console.log(error);
-//         } else {
-//           console.log('发送成功')
-//         }
-//     });
-// }
+    }, function (error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+          console.log('发送成功')
+        }
+    });
+}
 // sendMail('329103586@qq.com','这是测试邮件', 'Hi Amor,这是一封测试邮件');
-// // module.exports = sendMail;
+module.exports = sendMail;
